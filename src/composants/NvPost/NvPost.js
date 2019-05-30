@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { toast } from 'react-toastify';
+
 
 import './NvPost.css'
 
@@ -17,7 +19,11 @@ class NvPost extends Component {
         content: this.state.content,
         auteur: this.state.author
       }
-      axios.post('https://jsonplaceholder.typicode.com/posts', {nvPost})
+      axios.post('https://jsonplaceholder.typicode.com/posts', nvPost)
+        .then(res => {
+          toast.info(`Article "${res.data.title}" ajouté par "${res.data.auteur}"`)
+        })
+
     }
 
     render () {

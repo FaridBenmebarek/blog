@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { toast } from 'react-toastify';
 
 import './PostComplet.css'
 
@@ -23,7 +24,7 @@ class PostComplet extends Component {
 
   supprimePost = () => {
     axios.delete('https://jsonplaceholder.typicode.com/posts/\' + this.props.id')
-    console.log(`L'article "${this.state.loadedPost.title}" a bien été supprimé !`)
+    toast.error(`L'article "${this.state.loadedPost.title}" a bien été supprimé !`)
   }
 
   render () {
